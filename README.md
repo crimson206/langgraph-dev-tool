@@ -44,7 +44,7 @@ The repository includes several examples demonstrating the use of LangGraph in d
 
 ### Conditional Edge Examples
 
-Located in `example/langgraph/conditional_edge.ipynb`
+Located in [example/langgraph/conditional_edge.ipynb](./example/langgraph/conditional_edge.ipynb)
 
 This example demonstrates how to use conditional edges in LangGraph to create dynamic branching logic based on state conditions. It covers:
 
