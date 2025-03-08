@@ -30,7 +30,6 @@ classifiers = [
 ]
 dependencies = [
     "langgraph",
-    "crimson-folder-system-beta"
 ]
 requires-python = ">=3.9"
 
