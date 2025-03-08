@@ -1,98 +1,68 @@
-**Template README.md**\
-This file is from the [template repository](https://github.com/crimson206/template/blob/main/README.md).
-Rewrite it for your own package.
+# Crimson LangGraph Development Tools
 
-## Python Package Setup
+A lightweight library for LangGraph that provides useful shortcuts and additional utility functions.
 
-### Setup Base
+[![PyPI - Version](https://img.shields.io/pypi/v/crimson-langgraph-dev-tool.svg)](https://pypi.org/project/crimson-langgraph-dev-tool/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/crimson-langgraph-dev-tool.svg)](https://pypi.org/project/crimson-langgraph-dev-tool/)
 
-To install required pip modules for `generate_toml.py`, run
-``` bash
-source scripts/setup_base.sh
+## Installation
+
+```bash
+pip install crimson-langgraph-dev-tool
 ```
 
-### User Setup
+## Overview
 
-- go to `generate_toml.py` file, and complete the setup in the `User Setup` session.
+This library provides a set of tools and examples to make working with LangGraph easier and more efficient. It includes utility functions for visualization and a collection of examples demonstrating common patterns and use cases.
 
+## Modules
+
+### `crimson.langgraph_dev_tool.display`
+
+This module contains functions for visualizing LangGraph objects:
+
+- `display_graph(graph)`: Renders a compiled state graph as a Mermaid diagram in Jupyter notebooks
+
+Example usage:
 ```python
-options = Options(
-    # Will you use the discussion session in your repo?
-    discussion=False
-)
+from crimson.langgraph_dev_tool.display import display_graph
+from langgraph.graph import StateGraph
 
-# Define the general information of your package
-kwargs = Kwargs(
-    name_space="None",
-    module_name="None",
-    description="None",
-)
+# Create your graph
+builder = StateGraph(State)
+# Add nodes and edges
+# ...
+graph = builder.compile()
+
+# Display the graph
+display_graph(graph)
 ```
 
-If you wrote all the information, run
-```
-python generate_toml.py
-```
+## Examples
 
-#### Template
+The repository includes several examples demonstrating the use of LangGraph in different scenarios:
 
-If you want to understand the generation process, check the `template` variable in `generate_toml.py`.
+### Conditional Edge Examples
 
-### Setup Env
+Located in `example/langgraph/conditional_edge.ipynb`
 
-#### Prerequisite
+This example demonstrates how to use conditional edges in LangGraph to create dynamic branching logic based on state conditions. It covers:
 
-Finish [User Setup](#user-setup) first.
-Of course, conda command must be available.
+- Basic conditional branching
+- Using typed dictionaries for state management
+- Creating functions that return a list of destinations
+- Using `RunnableLambda` with conditional edges
+- Adding listeners for debugging and monitoring
 
-#### Setup Env
+Highlights:
+- Using `route_chars` function to conditionally route to multiple nodes
+- Demonstrating the differences between using a `Callable` vs a `Runnable` for path selection
+- Examples of advanced typehints and their usage in LangGraph
 
-Run
-``` bash
-source scripts/setup_env.sh
-```
+## Contributing
 
-steps
-- create an conda environment named as your $MODULE_NAME
-- activate the environment.
-- install requirements.txt
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-#### Generate Private Env
-Generate a private repository in this repo.
-I recommend you to write all the unstructured codes in this repo.
+## License
 
-``` bash
-source scripts/generate_dev_repo.sh
-```
-
-It will ask you the name of your repo, and then, generate a repo named f'{your_repo_name}-dev'.
-
-**Usage Tip**
-
-If you wrote your codes in a wrong branch,
-- backup the files to the dev repo
-- remove changes in your main(not main branch) repo
-- move to your correct branch
-- place back the backup codes
-
-
-## Workflows
-
-I currently setup test and release workflows.
-
-**Test**
-
-If you make a PR with the patterns [ main, develop, 'release/*', 'feature/*' ],
-
-It will perform your unittest in ["3.9", "3.10", "3.11"]
-
-**Release**
-
-required secret : PYPI_API_TOKEN
-
-I usually make PRs only when I start release branches.
-release workflow is not conducted automatically. If you think your branch is ready to be published, 
-
-- go to https://github.com/{github_id}/{repo_name}/actions/workflows/release.yaml
-- find the button, 'Run workflow'
-- select the branch to publish. In my case, release/x.x.x
+This project is licensed under the MIT License - see the LICENSE file for details.

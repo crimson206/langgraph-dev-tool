@@ -31,7 +31,7 @@ classifiers = [
 dependencies = [
     "langgraph",
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 
 [project.urls]
 "Homepage" = "https://github.com/crimson206/langgraph-dev-tool"
